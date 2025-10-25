@@ -1,0 +1,75 @@
+{
+    "version": 1,
+    "name": "Gameplay",
+    "maps": [
+        {
+            "name": "Running",
+            "id": "e9d36afd-b79b-485b-88b3-90e9b31b7f46",
+            "actions": [
+                {
+                    "name": "SwipeSideways",
+                    "type": "Value",
+                    "id": "41fdafbf-30dc-4561-af98-19bba0a99288",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Tap",
+                    "type": "Value",
+                    "id": "0e0c752a-d01c-42a4-9d06-4d1a4c3d30e9",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Tap",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "SwipeUp",
+                    "type": "Value",
+                    "id": "4ac453b9-ed2a-4fe0-82f7-bf2ecfa92153",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "56380679-165d-4267-99d4-5a238850cfe5",
+                    "path": "<Touchscreen>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwipeSideways",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6352ca54-c321-4cf3-8bf9-fe9cd4c9db85",
+                    "path": "<Touchscreen>/primaryTouch/tap",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fc7ca41c-269e-47cc-bd5c-18eda7c78f6c",
+                    "path": "<Touchscreen>/delta/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwipeUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
