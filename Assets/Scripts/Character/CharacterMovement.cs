@@ -5,6 +5,8 @@ public class CharacterMovement : MonoBehaviour
 {
     const float BASE_GRAVITY = -9.8f;
 
+    [SerializeField] private float speed = 1f;
+
     [Header("Lane Settings")]
     [SerializeField] private float laneDistance = 3f; // Distancia entre carriles
     [SerializeField] private float laneChangeSpeed = 10f; // Velocidad de cambio de carril
@@ -32,8 +34,13 @@ public class CharacterMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Interpolar suavemente hacia la posición objetivo del carril
         Vector3 newPos = rigidbody.position;
+
+        // Interpolar suavemente hacia la posición objetivo del carril
+        //  Run to stay in the same place while the world moves
+        newPos.z = Mathf.Lerp(newPos.z, targetPosition.z, Time.fixedDeltaTime * laneChangeSpeed);
+
+        //  Respond to swipe sideways input
         newPos.x = Mathf.Lerp(newPos.x, targetPosition.x, Time.fixedDeltaTime * laneChangeSpeed);
         rigidbody.MovePosition(newPos);
 
@@ -61,7 +68,7 @@ public class CharacterMovement : MonoBehaviour
         }
         canMove = false;
 
-        // Cambiar de carril
+        //  Change lanes, one each time
         if (direction > 0f)
         {
             currentLane++;
@@ -73,7 +80,7 @@ public class CharacterMovement : MonoBehaviour
 
         currentLane = Mathf.Clamp(currentLane, -1, 1);
 
-        // Actualizar posici�n objetivo
+        // Update target position on X axis
         targetPosition.x = currentLane * laneDistance;        
     }
 

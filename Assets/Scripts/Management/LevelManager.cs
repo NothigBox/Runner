@@ -10,11 +10,14 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private List<MapChunk> chunks;
 
+
+    [SerializeField] private Transform spawnPoint;
+
     private void Start()
     {
         for (int i = 0; i < chunks.Count; i++) 
         {
-            map.AddObserver(chunks[i]);
+            map.AddMapChunk(chunks[i] as ISpeedObserver);
         }
     }
 
@@ -22,11 +25,20 @@ public class LevelManager : MonoBehaviour
     {
         touch.OnMove += character.Move;
         touch.OnJump += character.Jump;
+
+        map.OnMapChunkDeleted += SpawnMap;
     }
 
     private void OnDisable()
     {
         touch.OnMove -= character.Move;
         touch.OnJump -= character.Jump;
+
+        map.OnMapChunkDeleted -= SpawnMap;
+    }
+
+    private void SpawnMap()
+    {
+        map.AddMapChunk(factory.GetMapChunk());
     }
 }
